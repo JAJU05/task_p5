@@ -1,4 +1,9 @@
 media
+static
 
+env
 venv
+.env
+.venv
+
 .idea
