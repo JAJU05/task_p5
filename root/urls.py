@@ -20,5 +20,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('', schema_view.with_ui('swagger', cache_timeout=0)),
     path('admin/', admin.site.urls),
+    path('api/v1/auth/', include('djoser.urls.authtoken')),
     path('api/v1/', include('home.urls')),
+    path('api/v1/accounts/', include('djoser.urls')),
 ]
