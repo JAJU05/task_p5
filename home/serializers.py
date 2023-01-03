@@ -1,5 +1,3 @@
-from uuid import uuid4
-
 from rest_framework.serializers import ModelSerializer
 
 from home.models import Product, Category, Shop, ProductImage

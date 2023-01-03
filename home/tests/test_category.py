@@ -46,7 +46,7 @@ def test_category_list_api(client, categories):
 def test_category_update_api(client, categories):
     category = Category.objects.first()
     '/api/v1/category/e09c9c1e-c071-4e4e-bc6f-76fc2b67d5f5/'
-    url = reverse_lazy('category-detail', args=(category.pk, ))
+    url = reverse_lazy('category-detail', args=(category.pk,))
     data = {
         'name': 'Kiyim-kechak'
     }
@@ -54,4 +54,3 @@ def test_category_update_api(client, categories):
     assert response.status_code == 200
     assert response.data['name'] == data['name']
     assert response.data['id'] == str(category.pk)
-
