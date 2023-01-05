@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from home.models import Product, Category, Brand
+from home.models import Product, Category
 
 class ProductModelSerializer(ModelSerializer):
     class Meta:
