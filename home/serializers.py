@@ -2,13 +2,13 @@ from uuid import uuid4
 
 from rest_framework.serializers import ModelSerializer
 
-from home.models import Category, Shop, Product
+from home.models import Product, Category, Shop, ProductImage
 
 
 class CategoryModelSerializer(ModelSerializer):
     class Meta:
         model = Category
-        fields = ('id', 'name',)
+        fields = ('id', 'name')
 
 
 class ShopModelSerializer(ModelSerializer):
@@ -23,5 +23,7 @@ class ProductModelSerializer(ModelSerializer):
         fields = ('id', 'name', 'price')
 
 
-
-
+class ProductImageModelSerializer(ModelSerializer):
+    class Meta:
+        model = ProductImage
+        fields = ('id', 'image', 'product')

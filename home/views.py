@@ -1,9 +1,15 @@
+import itertools
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
+from rest_framework.parsers import MultiPartParser
 from rest_framework.viewsets import ModelViewSet
 
-from home.models import Product, Category, Shop
-from home.serializers import ProductModelSerializer, CategoryModelSerializer, ShopModelSerializer
+from home.filters import ProductFilter
+from home.models import Product, Category, Shop, ProductImage
+from home.serializers import ProductModelSerializer, CategoryModelSerializer, ShopModelSerializer, \
+    ProductImageModelSerializer
 
 
 class ProductModelViewSet(ModelViewSet):
@@ -18,6 +24,7 @@ class ProductModelViewSet(ModelViewSet):
     #     'category': ['exact'],
     #     'shop': ['exact'],
     # }
+    filterset_class = ProductFilter
 
 
 class CategoryModelViewSet(ModelViewSet):
@@ -25,9 +32,17 @@ class CategoryModelViewSet(ModelViewSet):
     serializer_class = CategoryModelSerializer
 
 
-class ShopModelViewSet(ModelViewSet):
+class ShopListCreateAPIView(ListCreateAPIView):
+    queryset = Shop.objects.all()
+    parser_classes = (MultiPartParser,)
+    serializer_class = ShopModelSerializer
+
+
+class ShopRetrieveAPIView(RetrieveAPIView):
     queryset = Shop.objects.all()
     serializer_class = ShopModelSerializer
 
 
-
+class ProductImageModelViewSet(ModelViewSet):
+    queryset = ProductImage.objects.all()
+    serializer_class = ProductImageModelSerializer

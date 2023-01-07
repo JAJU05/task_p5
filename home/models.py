@@ -1,7 +1,7 @@
 from uuid import uuid4
 
-from django.db.models import Model, ForeignKey, CharField, ImageField, UUIDField, TextField, CASCADE, IntegerField, \
-    DateField, DecimalField
+from django.db.models import CharField, UUIDField, ForeignKey, Model, TextField, ImageField, DecimalField, \
+    CASCADE, SET_NULL
 
 
 class Category(Model):
@@ -27,10 +27,10 @@ class Product(Model):
     category = ForeignKey('home.Category', CASCADE)
 
 
+    def __str__(self):
+        return self.name
 
-
-
-
-
-
-
+class ProductImage(Model):
+    id = UUIDField(primary_key=True, unique=True, default=uuid4, editable=False)
+    image = ImageField(upload_to='shops/images/')
+    product = ForeignKey('home.Product', CASCADE)
