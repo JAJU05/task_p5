@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from home.models import Category
 
 
-@pytest.mark.django_db  # check model
+@pytest.mark.django_db
 def test_create_model_category():
     category = Category.objects.create(name='Boshqalar')
     count = Category.objects.count()
@@ -15,7 +15,7 @@ def test_create_model_category():
     assert count == 1
 
 
-@pytest.mark.django_db  # check api
+@pytest.mark.django_db
 def test_create_category_api(client):
     url = reverse_lazy('category-list')
     data = {
@@ -36,7 +36,6 @@ def categories():
 @pytest.mark.django_db
 def test_category_list_api(client, categories):
     url = reverse_lazy('category-list')
-    # url = '/api/v1/category/'
     response = client.get(url)
     assert response.status_code == 200
     assert len(response.data) == 2

@@ -18,7 +18,7 @@ class ShopModelSerializer(ModelSerializer):
 class ProductModelSerializer(ModelSerializer):
     class Meta:
         model = Product
-        fields = ('id', 'name', 'price')
+        fields = "__all__"
 
 
 class ProductImageModelSerializer(ModelSerializer):

@@ -29,8 +29,8 @@ class Product(Model):
     id = UUIDField(primary_key=True, unique=True, default=uuid4, editable=False)
     name = CharField(max_length=255)
     price = DecimalField(max_digits=9, decimal_places=2)
-    shop = ForeignKey('home.Shop', CASCADE)
-    category = ForeignKey('home.Category', CASCADE)
+    shop = ForeignKey('home.Shop',CASCADE, null = True)
+    category = ForeignKey('home.Category',CASCADE, null = True)
 
     def __str__(self):
         return self.name
