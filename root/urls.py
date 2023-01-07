@@ -42,4 +42,5 @@ urlpatterns = [
     path('', schema_view.with_ui('swagger', cache_timeout=0)),
     path('admin/', admin.site.urls),
     path('api/v1/', include('home.urls')),
+    path('api/v1/login-register/', include('users.urls')),
 ]
