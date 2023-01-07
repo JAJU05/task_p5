@@ -18,11 +18,10 @@ class ShopModelSerializer(ModelSerializer):
 class ProductModelSerializer(ModelSerializer):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ('id', 'name', 'price')
 
 
 class ProductImageModelSerializer(ModelSerializer):
     class Meta:
         model = ProductImage
         fields = ('id', 'image', 'product')
-
