@@ -16,7 +16,7 @@ class Category(Model):
 
 
 class Shop(Model):
-    id = UUIDField(primary_key=True, unique=True, default=uuid4(), editable=False)
+    id = UUIDField(primary_key=True, unique=True, default=uuid4, editable=False)
     name = CharField(max_length=255)
     description = TextField()
     image = ImageField(upload_to='shops/')
